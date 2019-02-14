@@ -9,14 +9,12 @@ private function getRegionNameByStateCode($stateCode)
 {
     $region = $this->locationRepository->getRegionByStateCode($stateCode);
 
-    if (is_null($region)) {
-        \Log::error('input.region_not_found', ['stateCode' => $stateCode]);
-        throw new \Exception('region_not_found');
+    if (!$region) {
+        \Log::warning("stateCode: '" . $stateCode . "' has no region");
     }
 
     return $region->getName();
 }
-
 MORE 
 Random
 LINEz
