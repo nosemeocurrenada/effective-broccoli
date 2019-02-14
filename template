@@ -1,0 +1,11 @@
+private function getRegionNameByStateCode($stateCode)
+{
+    $region = $this->locationRepository->getRegionByStateCode($stateCode);
+
+    if (is_null($region)) {
+        \Log::error('$CLASSNAME.region_not_found', ['stateCode' => $stateCode]);
+        throw new \Exception('region_not_found');
+    }
+
+    return $region->getName();
+}

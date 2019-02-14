@@ -1,0 +1,21 @@
+private function doStuff($with, $these, $guys)
+{
+	$region = $with->getRegion();
+
+	return $these;
+}
+
+private function getRegionNameByStateCode($stateCode)
+{
+    $region = $this->locationRepository->getRegionByStateCode($stateCode);
+
+    if (!$region) {
+        \Log::warning("stateCode: '" . $stateCode . "' has no region");
+    }
+
+    return $region->getName();
+}
+
+MORE 
+Random
+LINEz
