@@ -19,9 +19,8 @@ def getReplacedFileText (filepath, pattern, replacement):
 
 def replace(pattern, replacement, inputText):
 	import re
-	matches = re.findall(re.escape(pattern), inputText, flags=re.MULTILINE)
-	for match in matches:
-		match.expand('$MATCH').replace('$MATCH', replacement)
+	magicWord = '__$MATCH$__'
+	return re.sub(re.escape(pattern), magicWord, inputText).replace(magicWord, replacement)
 
 def fillTemplate(template, filepath):
 	name = camelCaseToSnakeCase(getFileName(filepath))
